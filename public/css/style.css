@@ -1,0 +1,58 @@
+*:focus {
+  outline: none; }
+
+.homepage-form input[type='text'] {
+  margin: 20px 20px 5px 20px;
+  padding: 5px 15px;
+  font-size: 16px;
+  width: 300px;
+  line-height: 2;
+  border-radius: 5px;
+  border: 1px solid gray; }
+
+.homepage-form input[type='radio'] {
+  cursor: pointer;
+  vertical-align: sub;
+  margin-left: 10px; }
+
+.homepage-form label {
+  cursor: pointer; }
+
+.homepage-form .type-select {
+  margin-bottom: 10px; }
+
+.sidebar-nav li .fa {
+  margin-right: 5px; }
+
+.content {
+  padding-top: 100px; }
+
+.content label {
+  font-size: 20px; }
+
+.bootstrap-tagsinput {
+  width: 100%; }
+
+.label {
+  font-size: 85%; }
+
+.message-home {
+  position: absolute;
+  width: 80%;
+  margin: 40px auto;
+  lefT: 0;
+  right: 0; }
+
+.w-90px {
+  width: 90px; }
+
+.w-200px {
+  width: 200px; }
+  .w-200px .btn {
+    float: left;
+    margin-left: 10px; }
+
+.show-song > div {
+  margin-top: 30px; }
+
+/*# sourceMappingURL=style.css.map */
