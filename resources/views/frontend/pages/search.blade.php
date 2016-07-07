@@ -25,7 +25,15 @@
                                     Brak
                                 @endif
                             </td>
-                            <td>{{ implode(', ', $song->tags()->lists('name')->toArray()) }}</td>
+                            <td>
+                                <i class="fa fa-tags"></i>
+                                @foreach($song->tags()->get() as $key => $tag)
+                                    <span>
+                                        {{ ($key != 0 ? ', ' : '') }}
+                                        <a href="{{ action('FrontendController@search', ['q' => $tag->name, 'type' => 'tag']) }}">{{ $tag->name }}</a>
+                                    </span>
+                                @endforeach
+                            </td>
                             <td class="w-200px">
                                 <a href="{{ action('FrontendController@showSong', ['id' => $song->id]) }}" class="btn btn-default"><i class="fa fa-music"></i> Zobacz</a>
                                 <a href="{{ action('FrontendController@editSong', ['id' => $song->id]) }}" class="btn btn-default"><i class="fa fa-edit"></i> Edytuj</a>

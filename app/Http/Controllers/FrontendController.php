@@ -70,10 +70,10 @@ class FrontendController extends Controller
         $type = Input::get('type');
         if ($query) {
             if($type == 'title') {
-                $songs = Songs::where('title', 'LIKE', '%' . $query . '%')->get();
+                $songs = Songs::whereRaw('LOWER(title) LIKE "%'.$query.'%"', [] )->get();
             } else {
                 $songs = Songs::whereHas('tags', function($q) use($query){
-                    $q->where('name', 'LIKE', '%'.$query.'%');
+                    $q->whereRaw('LOWER(name) LIKE "%'.$query.'%"', [] );
                 })->get();
             }
             return view('frontend/pages/search')->with([
@@ -115,7 +115,7 @@ class FrontendController extends Controller
             }
         }
         Flash::success('Piosenka została pomyślnie zapisana!');
-        return redirect()->action('FrontendController@editSong', ['id' => $id]);
+        return redirect()->action('FrontendController@showSong', ['id' => $id]);
     }
 
     public function showSong($id){

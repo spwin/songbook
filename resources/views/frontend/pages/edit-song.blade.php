@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <label>Tagi</label><br/>
-                    <input type="text" value="{{ implode(', ', $song->tags()->lists('name')->toArray()) }}" class="form-control" name="tags" placeholder="Dodaj tag.." data-role="tagsinput">
+                    <input type="text" value="{{ implode(',', $song->tags()->lists('name')->toArray()) }}" class="form-control" name="tags" placeholder="Dodaj tag.." data-role="tagsinput">
                 </div>
                 <button type="submit" class="btn btn-default">Zapisz</button>
                 {!! Form::close() !!}
