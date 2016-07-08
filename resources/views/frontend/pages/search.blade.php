@@ -17,7 +17,7 @@
                     <tbody>
                     @foreach($songs as $song)
                         <tr>
-                            <td class="font-20px">{{ $song->title }}</td>
+                            <td class="font-20px"><a href="{{ action('FrontendController@showSong', ['url' => $song->url]) }}">{{ $song->title }}</a></td>
                             <td>
                                 @if($song->sample)
                                     <a class="btn btn-default" href="{{ $song->sample }}" target="_blank"><i class="fa fa-youtube-play"></i></a>
