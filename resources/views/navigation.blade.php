@@ -1,4 +1,5 @@
 <!-- Navigation -->
+<a href="{{ action('FrontendController@addSong') }}" class="btn btn-default main-add"><i class="fa fa-plus"></i> Dodaj piosenkę</a>
 <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">

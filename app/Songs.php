@@ -12,7 +12,7 @@ class Songs extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'sample', 'chords', 'words'
+        'title', 'sample', 'chords', 'words', 'url'
     ];
 
     public function tags(){

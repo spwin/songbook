@@ -38,7 +38,7 @@
                         <label>Tagi</label><br/>
                         <input type="text" class="form-control" name="tags" placeholder="Dodaj tag.." data-role="tagsinput">
                     </div>
-                    <button type="submit" class="btn btn-default">Dodaj</button>
+                    <button type="submit" class="btn btn-default"><i class="fa fa-save"></i> Dodaj</button>
                 {!! Form::close() !!}
             </div>
         </div>

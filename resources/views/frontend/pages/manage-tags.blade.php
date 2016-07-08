@@ -16,7 +16,7 @@
                     <tbody>
                     @foreach($tags as $tag)
                         <tr>
-                            <td>{{ $tag->name }}</td>
+                            <td class="font-20px">{{ $tag->name }}</td>
                             <td>{{ $tag->songs()->count() }}</td>
                             <td class="w-180px">
                                 <a href="{{ action('FrontendController@search', ['q' => $tag->name, 'type' => 'tag']) }}" class="btn btn-default"><i class="fa fa-search"></i> Pokaż piosenki</a>

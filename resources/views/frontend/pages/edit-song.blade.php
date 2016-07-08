@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 @if (Session::has('flash_notification.message'))
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 no-padding">
                         <div class="alert alert-{{ Session::get('flash_notification.level') }}">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             {{ Session::get('flash_notification.message') }}
@@ -45,7 +45,7 @@
                     <label>Tagi</label><br/>
                     <input type="text" value="{{ implode(',', $song->tags()->lists('name')->toArray()) }}" class="form-control" name="tags" placeholder="Dodaj tag.." data-role="tagsinput">
                 </div>
-                <button type="submit" class="btn btn-default">Zapisz</button>
+                <button type="submit" class="btn btn-default"><i class="fa fa-save"></i> Zapisz</button>
                 {!! Form::close() !!}
             </div>
         </div>

@@ -17,7 +17,7 @@ Route::get('add-song', 'FrontendController@addSong');
 Route::get('all-songs', 'FrontendController@allSongs');
 Route::get('search', 'FrontendController@search');
 Route::get('{id}/edit-song', 'FrontendController@editSong');
-Route::get('{id}/show-song', 'FrontendController@showSong');
+Route::get('show-song/{url}', 'FrontendController@showSong');
 
 Route::post('{id}/update-song', 'FrontendController@updateSong');
 Route::post('save-song', 'FrontendController@saveSong');

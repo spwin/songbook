@@ -27,13 +27,14 @@ class FrontendController extends Controller
 
     public function saveSong(Request $request){
         $v = Validator::make($request->all(), [
-            'title' => 'required'
+            'title' => 'required|unique:songs'
         ]);
         if ($v->fails()) {
             return redirect()->back()->withErrors($v->errors())->withInput();
         }
         $input = $request->all();
         $song = new Songs();
+        $input['url'] = str_slug($input['title'], '-');
         $song->fill($input);
         $song->save();
         if($input['tags']) {
@@ -70,7 +71,7 @@ class FrontendController extends Controller
         $type = Input::get('type');
         if ($query) {
             if($type == 'title') {
-                $songs = Songs::whereRaw('LOWER(title) LIKE "%'.$query.'%"', [] )->get();
+                $songs = Songs::whereRaw('LOWER(title) LIKE "%'.$query.'%" OR LOWER(url) LIKE "%'.$query.'%"', [] )->get();
             } else {
                 $songs = Songs::whereHas('tags', function($q) use($query){
                     $q->whereRaw('LOWER(name) LIKE "%'.$query.'%"', [] );
@@ -95,13 +96,14 @@ class FrontendController extends Controller
 
     public function updateSong($id, Request $request){
         $v = Validator::make($request->all(), [
-            'title' => 'required'
+            'title' => 'required|unique:songs,title,'.$id
         ]);
         if ($v->fails()) {
             return redirect()->back()->withErrors($v->errors())->withInput();
         }
         $input = $request->all();
         $song = Songs::findOrFail($id);
+        $input['url'] = str_slug($input['title'], '-');
         $song->fill($input);
         $song->save();
         $song->tags()->detach($song->tags()->lists('id')->toArray());
@@ -115,13 +117,17 @@ class FrontendController extends Controller
             }
         }
         Flash::success('Piosenka została pomyślnie zapisana!');
-        return redirect()->action('FrontendController@showSong', ['id' => $id]);
+        return redirect()->action('FrontendController@showSong', ['url' => $song->url]);
     }
 
-    public function showSong($id){
-        $song = Songs::findOrFail($id);
-        return view('frontend/pages/show-song')->with([
-            'song' => $song
-        ]);
+    public function showSong($url){
+        $song = Songs::where(['url' => $url])->first();
+        if($song) {
+            return view('frontend/pages/show-song')->with([
+                'song' => $song
+            ]);
+        } else {
+            return redirect()->back();
+        }
     }
 }

@@ -13,6 +13,7 @@ class CreateSongsTagsTable extends Migration
     public function up()
     {
         Schema::create('songs_tags', function (Blueprint $table) {
+            $table->engine = 'MyISAM';
             $table->integer('song_id')->unsigned();
             $table->foreign('song_id')->references('id')->on('songs');
             $table->integer('tag_id')->unsigned();
