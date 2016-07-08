@@ -27,6 +27,7 @@
 <body id="page-top">
 @include('navigation')
 @yield('content')
+<a id="to-top" href="#page-top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
 <!-- jQuery -->
 <script src="{{ URL::to('/') }}/js/jquery.js"></script>
 

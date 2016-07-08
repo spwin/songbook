@@ -66,6 +66,7 @@ td.font-20px {
 
 a.main-add {
   margin: 10px;
-  position: absolute; }
+  position: absolute;
+  z-index: 500; }
 
 /*# sourceMappingURL=style.css.map */
