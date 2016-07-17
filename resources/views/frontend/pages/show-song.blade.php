@@ -14,7 +14,7 @@
                 <h1>{{ $song->title }} <a href="{{ action('FrontendController@editSong', ['id' => $song->id]) }}" class="btn btn-default"><i class="fa fa-edit"></i> Edytuj</a></h1>
                 <div class="youtube-preview">
                     @if($song->sample)
-                        <iframe width="560" height="315" src="{{ str_replace("watch?v=", "v/", $song->sample) }}" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="{{ str_replace("watch?v=", "embed/", $song->sample) }}" frameborder="0" allowfullscreen></iframe>
                     @endif
                 </div>
                 @if($song->chords)
